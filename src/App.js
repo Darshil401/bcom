@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react';
 
 function App() {
+
+  const [name,setname] = useState('CDMI');
+  const [a,seta] = useState(0);
+  const [b,setb] = useState(0);
+  const [ans,setans] = useState();
+
+  const answer = () => {
+      setans(parseInt(a)+parseInt(b))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1>{name}</h1>
+        <input type="button" value="Click" onClick={()=>{setname("Hello")}} />
+
+        <input type="text" placeholder='Enter A' onChange={(e)=>{seta(e.target.value)}}/>
+        <input type="text" placeholder='Enter B' onChange={(e)=>{setb(e.target.value)}}/>
+        <input type="button" value="Click" onClick={answer} />
+        <input type="text" value={ans} />
     </div>
   );
 }
